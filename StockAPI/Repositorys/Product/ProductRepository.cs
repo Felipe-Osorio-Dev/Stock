@@ -27,7 +27,7 @@ namespace StockAPI.Repositorys.Product
             .Take(pageSize)
             .ToListAsync(ct);
 
-        public Task<ProductEntity?> GetProductByIdAsync(int id, CancellationToken ct = default)
+        public Task<ProductEntity?> GetProductByIdAsync(long id, CancellationToken ct = default)
             => _context.Products.FirstOrDefaultAsync(p => p.Id == id, ct);
 
         public async Task SaveProductAsync(ProductEntity product, CancellationToken ct = default)
