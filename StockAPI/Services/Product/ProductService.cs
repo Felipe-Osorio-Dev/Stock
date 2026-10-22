@@ -38,7 +38,7 @@ namespace StockAPI.Services.Product
             return Result<ProductDto>.Success(_mapper.Map<ProductDto>(product));
         }
 
-        public async Task<Result> DeleteProductAsync(int productId, CancellationToken ct = default)
+        public async Task<Result> DeleteProductAsync(long productId, CancellationToken ct = default)
         {
             var product = await _productRepository.GetProductByIdAsync(productId, ct);
 
@@ -63,7 +63,7 @@ namespace StockAPI.Services.Product
             return Result<List<ProductDto>>.Success((_mapper.Map<List<ProductDto>>(products)));
         }
 
-        public async Task<Result<ProductDto>> GetProductByIdAsync(int productId, CancellationToken ct = default)
+        public async Task<Result<ProductDto>> GetProductByIdAsync(long productId, CancellationToken ct = default)
         {
             var product = await _productRepository.GetProductByIdAsync(productId, ct);
             return product is null
@@ -71,7 +71,7 @@ namespace StockAPI.Services.Product
                 : Result<ProductDto>.Success(_mapper.Map<ProductDto>(product));
         }
 
-        public async Task<Result<ProductDto>> UpdateProductAsync(int productId, UpdateProductDto dto, CancellationToken ct = default)
+        public async Task<Result<ProductDto>> UpdateProductAsync(long productId, UpdateProductDto dto, CancellationToken ct = default)
         {
             var product = await _productRepository.GetProductByIdAsync(productId, ct);
 
